@@ -1,7 +1,8 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
-const HelloWorldPlugin = require('./HelloWorldPlugin');
+const HelloWorldPlugin = require('./src/plugins/HelloWorldPlugin');
+const AddReadMePlugin = require('./src/plugins/AddReadMePlugin');
 const webpack = require('webpack');
 
 module.exports = {
@@ -14,6 +15,7 @@ module.exports = {
         contentBase: './dist',
         hot: true
     },
+    // mode: "development",
     module: {
         rules: [
             {
@@ -33,6 +35,7 @@ module.exports = {
         new webpack.NamedModulesPlugin(),
         new webpack.HotModuleReplacementPlugin(),
         new HelloWorldPlugin({ options: true }),
+        new AddReadMePlugin({ options: true }),
     ],
     output: {
         filename: '[name].bundle.js',
